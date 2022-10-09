@@ -1,0 +1,124 @@
+{% load static %}
+
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
+<html>
+
+    <h3>Display Number of Leads Signed Till September 2022</h3>
+    <table>
+        <tr>
+            <th>
+                Number of Leads Signed Till September 2022
+            </th>
+        </tr>
+        <tr>
+            <th>
+                {{total.total}}
+            </th>
+        </tr>
+    </table>
+
+    <br>
+
+    <h3>Leads Signed Till september 2022</h3>
+    <table>
+        <tr>
+            <th>
+                Leads Signed Till September 2022
+            </th>
+        </tr>
+
+            {% for i in res %}
+            <tr>
+                <th>{{i.Lead}}</th>
+            </tr>
+            {% endfor %}
+    </table>
+
+    <br>
+
+    <h3>Lead Status Report</h3>
+    <table>
+        <tr>
+            <th>
+                Status
+            </th>
+            <th>Percentage</th>
+        </tr>
+
+            {% for i,j in dict1 %}
+            <tr>
+                <th>{{i}}</th>
+                <th>  {{j}}   </th>
+            </tr>
+            {% endfor %}
+    </table>
+
+    <img src="{% static '1.png' %}" alt="My image">
+    <br>
+
+    <h3>Lead Stage Report</h3>
+    <br>
+    <table>
+        <tr>
+            <th>
+                Status
+            </th>
+            <th>Percentage</th>
+        </tr>
+            {% for i,j in dict2 %}
+            <tr>
+                <th>{{i}}</th>
+                <th>  {{j}}   </th>
+            </tr>
+            {% endfor %}
+    </table>
+
+    <img src="{% static '2.png' %}" alt="My image">
+
+    <br>
+    <h3>Display Forecast Revenue</h3>
+    <table>
+        <tr>
+            <th>Lead</th>
+            <th>Stage</th>
+            <th>Annual Revenue(amount*12)</th>
+        </tr>
+            {% for i in query %}
+            <tr>
+                <th>{{i.Lead}}</th>
+                <th>{{i.Stage}}</th>
+                <th>{{i.Amount}}</th>
+            </tr>
+            {% endfor %}
+            <tr>
+            <th>Total</th>
+                <th></th>
+                <th>{{ output1 }}</th>
+            </tr>
+    </table>
+
+
+    <br>
+    <h3>Display Potential Lost Revenue</h3>
+    <table>
+        <tr>
+            <th>Lead</th>
+            <th>Annual Revenue Lost (amount*12)</th>
+        </tr>
+            {% for i in query %}
+            <tr>
+                <th>{{i.Lead}}</th>
+                <th>{{i.Amount}}</th>
+            </tr>
+            {% endfor %}
+            <tr>
+            <th>Total</th>
+                <th>{{ output2 }}</th>
+            </tr>
+    </table>
+</html>
